@@ -7,40 +7,56 @@
 #include "driverlib/gpio.h"
 #include "driverlib/pwm.h"
 #include "driverlib/systick.h"
-#include "inc/drivertimer.h"
+#include "driverlib/drivertimer.h"
+#include "driverlib/uartstdio.h"
 
 #define PERIODO 60001
 #define DELTA 3000
 
+uint32_t ui32SysClock ;
 uint8_t LED_D1 = 0;
 int32_t LED_D4 = PERIODO;
 uint8_t updn = 1;
-
 void SysTick_Handler(void){
     GPIOPinWrite(GPIO_PORTN_BASE, GPIO_PIN_1, LED_D1);
     LED_D1 ^= GPIO_PIN_1;
-    ReiniciaContador();
+    //ReiniciaContador();
 } // SysTick_Handler
 
-void Periodo1(){
-SysTickPeriodSet(25000000); // f = 25MHz / t = 1 s
-int32_t contador = (TIMER0_TAILR_R - TIMER0_TAMATCHR_R);
-}
-void Periodo1ms(){
-SysTickPeriodSet(25000); // f = 25MHz / t = 1ms
-}
+//void Periodo1(){
+//SysTickPeriodSet(25000000); // f = 25MHz / t = 1 s
+//int32_t contador = TIMER0_TAR_R;
+//
+//}
+//void Periodo1ms(){
+//SysTickPeriodSet(25000); // f = 25MHz / t = 1ms
+//}
 
+void ConfigUART(void){
+  
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
+  GPIOPinConfigure(GPIO_PA0_U0RX);
+  GPIOPinConfigure(GPIO_PA1_U0TX);
+  GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
+  
+  UARTStdioConfig(0, 115200, ui32SysClock);
+  
+}
 
 void main(void){
-  uint32_t ui32SysClock = SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ |
+ ui32SysClock = SysCtlClockFreqSet((SYSCTL_XTAL_25MHZ |
                                               SYSCTL_OSC_MAIN |
                                               SYSCTL_USE_PLL |
-                                              SYSCTL_CFG_VCO_480),
+                                              SYSCTL_CFG_VCO_480),   
                                               120000000); // PLL em 120MHz
-  
-  SysTickEnable();
-  IniciaTimer();
-  Periodo1();
+   IniciaTimer();
+   SysTickEnable();
+   SysTickPeriodSet(25000000);   
+   ConfigUART();
+  //UARTprintf("TESTE");
+ 
+  //Periodo1();
   
   
   SysCtlPeripheralEnable(SYSCTL_PERIPH_GPION); // Habilita GPIO N (LED D1 = PN1, LED D2 = PN0)
@@ -62,10 +78,10 @@ void main(void){
   while(1){
     
     if(GPIOPinRead(GPIO_PORTJ_BASE, GPIO_PIN_0) != GPIO_PIN_0) // Testa estado do push-button SW1
-        Periodo1();
+        UARTprintf("TESTE1");//Periodo1();
     
     if(GPIOPinRead(GPIO_PORTJ_BASE, GPIO_PIN_1) != GPIO_PIN_1) // Testa estado do push-button SW2
-        Periodo1ms();    
+       UARTprintf("TESTE2");// Periodo1ms();    
       
   };
 } // main

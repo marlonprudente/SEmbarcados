@@ -1250,6 +1250,12 @@
             <name>$PROJ_DIR$\uart.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\uartstdio.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\uartstdio.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\udma.c</name>
         </file>
         <file>

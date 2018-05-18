@@ -1,26 +1,26 @@
-"D:\aulas\EL68E_SE\install_IAR8\Tiva_IAR8\exemplo2\src\startup_ewarm.c"
+"C:\Users\marlo\Documents\Embarcados\Tiva_IAR8\laboratorio2\src\startup_ewarm.c"
 -std=c11
 -ferror-limit=0
 -I
-D:\aulas\EL68E_SE\install_IAR8\Tiva_IAR8\exemplo2\..\..\..
+C:\Users\marlo\Documents\Embarcados\Tiva_IAR8\laboratorio2\..\..\..
 -I
-D:\aulas\EL68E_SE\install_IAR8\Tiva_IAR8\exemplo2\..
+C:\Users\marlo\Documents\Embarcados\Tiva_IAR8\laboratorio2\..
 -I
-D:\aulas\EL68E_SE\install_IAR8\Tiva_IAR8\exemplo2\..\inc
+C:\Users\marlo\Documents\Embarcados\Tiva_IAR8\laboratorio2\..\inc
 -I
-D:\aulas\EL68E_SE\install_IAR8\Tiva_IAR8\exemplo2\..\driverlib
+C:\Users\marlo\Documents\Embarcados\Tiva_IAR8\laboratorio2\..\driverlib
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\inc
 -I
 C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.0\arm\inc\c
 -I
-D:\aulas\EL68E_SE
+C:\Users\marlo\Documents
 -I
-D:\aulas\EL68E_SE\install_IAR8\Tiva_IAR8
+C:\Users\marlo\Documents\Embarcados\Tiva_IAR8
 -I
-D:\aulas\EL68E_SE\install_IAR8\Tiva_IAR8\inc
+C:\Users\marlo\Documents\Embarcados\Tiva_IAR8\inc
 -I
-D:\aulas\EL68E_SE\install_IAR8\Tiva_IAR8\driverlib
+C:\Users\marlo\Documents\Embarcados\Tiva_IAR8\driverlib
 -D__CHAR_BITS__=8
 -D__CHAR_MAX__=0xff
 -D__CHAR_MIN__=0
